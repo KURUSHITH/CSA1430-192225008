@@ -1,0 +1,28 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%option noyywrap
+
+%%
+int main() {
+    char target_word[100];  // Word to search for
+    int count = 0;          // Frequency counter
+
+    printf("Enter the word to find frequency: ");
+    scanf("%s", target_word);
+
+    while (1) {
+        char input_word[100];
+        int n = scanf("%s", input_word);
+        if (n == EOF)
+            break;
+        
+        if (strcmp(input_word, target_word) == 0)
+            count++;
+    }
+
+    printf("Frequency of '%s': %d\n", target_word, count);
+    return 0;
+}

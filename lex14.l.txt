@@ -1,0 +1,13 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+word_to_replace    { printf("ReplacementWord"); }
+.|\n               { putchar(yytext[0]); }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}

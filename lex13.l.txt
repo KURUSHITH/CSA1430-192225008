@@ -1,0 +1,29 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%option noyywrap
+
+%%
+int main() {
+    int max_length = 0;  // Length of the longest word
+    int current_length = 0;  // Length of the current word
+
+    while (1) {
+        int c = getchar();
+        if (c == EOF || c == ' ' || c == '\t' || c == '\n') {
+            if (current_length > max_length)
+                max_length = current_length;
+            current_length = 0;
+        } else {
+            current_length++;
+        }
+        
+        if (c == EOF)
+            break;
+    }
+
+    printf("Length of the longest word: %d\n", max_length);
+    return 0;
+}

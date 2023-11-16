@@ -1,0 +1,18 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+
+int|float|double|char|void 
+  { printf("Keyword: %s\n", yytext); }
+[a-zA-Z_][a-zA-Z0-9_]*      
+  { printf("Identifier: %s\n", yytext); }
+.|\n                         
+
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
